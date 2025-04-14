@@ -1,54 +1,83 @@
-# React + TypeScript + Vite
+# 🧮 Obsidian Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Obsidian Calculator** is a powerful, intuitive, and beautifully designed all-in-one calculator app built using React and TypeScript. Designed for both casual users and power users, it supports everything from simple arithmetic to calculus operations like differentiation and integration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+### 🔢 Basic Arithmetic
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Add, subtract, multiply, and divide with precision.
+- Supports keyboard input and standard math operators.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 🧮 Advanced Math
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Trigonometry, logarithms, square roots, powers, and more.
+- Fraction and decimal support.
+- Factorials, permutations, combinations.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📐 Unit Conversion
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Convert between:
+  - Length (meter, kilometer, foot, inch)
+  - Weight (kilogram, pound, ounce, gram)
+  - Temperature (Celsius, Fahrenheit, Kelvin)
+  - Time (second, minute, hour)
+
+### 📘 Calculus Tools
+
+- **Differentiation**: Symbolically differentiate any algebraic expression.
+- **Integration**: Perform definite integrals between two limits using numerical approximation.
+- Expression validation and clear error feedback for invalid input.
+- Helper instructions for calculus formatting.
+
+### 🕓 History
+
+- View your recent calculations.
+- Easily re-use or reference past expressions.
+
+---
+
+## ⚙️ Tech Stack
+
+- **React + TypeScript**
+- **TailwindCSS** for styling
+- **mathjs** for advanced math computation
+
+---
+
+## 💡 Highlights
+
+- 📱 Responsive UI for mobile and desktop.
+- 🌗 Dark theme by default, perfect for long working hours.
+- ✨ Clean and minimal design.
+- ✅ Type-safe architecture.
+- 🚀 Fast and smooth user interactions.
+
+---
+
+## 🧪 Example Inputs
+
+### Integration
+
+- **Expression:** `x^2 + 3x`
+- **Limits:** Lower: `0`, Upper: `2`
+- **Output:** Approximate result of definite integral.
+
+### Differentiation
+
+- **Expression:** `x^3 + 2x`
+- **With respect to:** `x`
+- **Output:** `3x^2 + 2`
+
+---
+
+## 🧭 Usage Notes
+
+- Use only valid algebraic expressions.
+- Use `x` or `y` as variable names (as per your expression).
+- Ensure limits are numbers when integrating.
+- Input `x^2 + 3x` as `x^2 + 3*x` if using implicit multiplication.
+
+---
