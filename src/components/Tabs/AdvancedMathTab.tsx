@@ -14,7 +14,7 @@ import Display from "../Display";
 import Button from "../Button";
 import { CalcResult } from "../../types/CalcResult";
 
-const actions = [
+const actions: string[] = [
   "Fibonacci",
   "Is Prime?",
   "Prime Factors",
@@ -43,8 +43,8 @@ const AdvancedMathTab: React.FC = () => {
   }
 
   const handleClick = (label: string) => {
-    const a = parseInt(input);
-    const b = parseInt(secondaryInput);
+    const a: number = parseInt(input);
+    const b: number = parseInt(secondaryInput);
     let calc: CalcResult = { success: false, error: "Unknown error" };
 
     switch (label) {

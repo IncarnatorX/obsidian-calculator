@@ -45,7 +45,7 @@ const ScientificTab: React.FC = () => {
         setInput((prev) => prev + Math.E.toString());
         break;
       default: {
-        const isScientificFn = [
+        const isScientificFn: boolean = [
           "sin",
           "cos",
           "tan",
@@ -68,7 +68,7 @@ const ScientificTab: React.FC = () => {
     }
   };
 
-  const toggleDegrees = () => {
+  const toggleDegrees = (): void => {
     setUseDegrees((prev) => !prev);
   };
 

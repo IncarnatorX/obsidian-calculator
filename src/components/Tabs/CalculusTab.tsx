@@ -4,7 +4,7 @@ import { CalculatorContext } from "../../context/CalculatorContext";
 import Display from "../Display";
 import { CalcResult } from "../../types/CalcResult";
 
-const allowedVariables = ["x", "y"];
+const allowedVariables: string[] = ["x", "y"];
 
 const CalculusTab: React.FC = () => {
   const { addToHistory } = useContext(CalculatorContext);

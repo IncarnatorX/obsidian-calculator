@@ -7,7 +7,7 @@ import BasicTab from "./Tabs/BasicTab";
 import Tabs from "./Tabs";
 import CalculusTab from "./Tabs/CalculusTab";
 
-const tabs = [
+const tabs: string[] = [
   "Basic",
   "Scientific",
   "Advanced",

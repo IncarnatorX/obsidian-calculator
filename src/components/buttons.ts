@@ -1,4 +1,4 @@
-export const scientificButtons = [
+export const scientificButtons: string[] = [
   "9",
   "8",
   "7",
