@@ -293,31 +293,84 @@ export const convertValue = (
 
 // =================== Format Helper ===================
 
+// export const formatResult = (value: MathType): string => {
+//   try {
+//     if (typeof value === "number") {
+//       // Treat near-zero numbers as zero
+//       if (Math.abs(value) < 1e-12) return "0";
+
+//       const formatted = format(value, { precision: 14 });
+
+//       // Strip trailing .000... if present
+//       return formatted.replace(/\.0+$/, "");
+//     }
+
+//     // If value has a toString method (like Fraction, Complex, etc.)
+//     if (value && typeof value.toString === "function") {
+//       const str = value.toString();
+//       const num = parseFloat(str);
+
+//       // Again handle near-zero strings
+//       if (!isNaN(num) && Math.abs(num) < 1e-12) return "0";
+
+//       const formatted = format(num, { precision: 14 });
+
+//       return formatted.replace(/\.0+$/, "");
+//     }
+
+//     return "Invalid result";
+//   } catch (err) {
+//     console.error("formatResult error:", err);
+//     return "Formatting error";
+//   }
+// };
 export const formatResult = (value: MathType): string => {
   try {
+    let num: number | null = null;
+
     if (typeof value === "number") {
+      num = value;
+    } else if (value && typeof value.toString === "function") {
+      const parsed = parseFloat(value.toString());
+      if (!isNaN(parsed)) {
+        num = parsed;
+      }
+    }
+
+    if (num !== null) {
       // Treat near-zero numbers as zero
-      if (Math.abs(value) < 1e-12) return "0";
+      if (Math.abs(num) < 1e-12) return "0";
 
-      const formatted = format(value, { precision: 14 });
+      // Format the number with high precision initially
+      let formatted = format(num, { precision: 14 });
 
-      // Strip trailing .000... if present
+      // Handle scientific notation separately
+      if (formatted.includes("e")) {
+        formatted = num.toFixed(14).replace(/\.?0+$/, ""); // Remove unnecessary trailing zeros
+      }
+
+      // Add commas for better readability
+      if (!formatted.includes(".")) {
+        // If integer, add commas
+        formatted = parseInt(formatted, 10).toLocaleString();
+      } else {
+        // If decimal, add commas only to integer part
+        const parts = formatted.split(".");
+        parts[0] = parseInt(parts[0], 10).toLocaleString();
+
+        // Limit decimal digits to 6 places if too long
+        if (parts[1].length > 6) {
+          parts[1] = parts[1].substring(0, 6);
+        }
+
+        formatted = parts.join(".");
+      }
+
+      // Finally strip any trailing '.0' or '.0000...'
       return formatted.replace(/\.0+$/, "");
     }
 
-    // If value has a toString method (like Fraction, Complex, etc.)
-    if (value && typeof value.toString === "function") {
-      const str = value.toString();
-      const num = parseFloat(str);
-
-      // Again handle near-zero strings
-      if (!isNaN(num) && Math.abs(num) < 1e-12) return "0";
-
-      const formatted = format(num, { precision: 14 });
-
-      return formatted.replace(/\.0+$/, "");
-    }
-
+    // If the value could not be parsed
     return "Invalid result";
   } catch (err) {
     console.error("formatResult error:", err);
