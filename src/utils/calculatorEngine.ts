@@ -293,37 +293,6 @@ export const convertValue = (
 
 // =================== Format Helper ===================
 
-// export const formatResult = (value: MathType): string => {
-//   try {
-//     if (typeof value === "number") {
-//       // Treat near-zero numbers as zero
-//       if (Math.abs(value) < 1e-12) return "0";
-
-//       const formatted = format(value, { precision: 14 });
-
-//       // Strip trailing .000... if present
-//       return formatted.replace(/\.0+$/, "");
-//     }
-
-//     // If value has a toString method (like Fraction, Complex, etc.)
-//     if (value && typeof value.toString === "function") {
-//       const str = value.toString();
-//       const num = parseFloat(str);
-
-//       // Again handle near-zero strings
-//       if (!isNaN(num) && Math.abs(num) < 1e-12) return "0";
-
-//       const formatted = format(num, { precision: 14 });
-
-//       return formatted.replace(/\.0+$/, "");
-//     }
-
-//     return "Invalid result";
-//   } catch (err) {
-//     console.error("formatResult error:", err);
-//     return "Formatting error";
-//   }
-// };
 export const formatResult = (value: MathType): string => {
   try {
     let num: number | null = null;
